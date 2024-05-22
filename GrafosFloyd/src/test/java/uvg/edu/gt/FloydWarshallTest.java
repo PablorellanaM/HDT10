@@ -25,4 +25,13 @@ public class FloydWarshallTest {
         int toIndex = graph.getNodes().get("C");
         assertEquals(8, distances[fromIndex][toIndex]);
     }
+
+    @Test
+    public void testGetPath() {
+        int fromIndex = graph.getNodes().get("A");
+        int toIndex = graph.getNodes().get("C");
+        String path = floydWarshall.getPath(fromIndex, toIndex);
+        assertEquals("0 -> 1 -> 2", path);
+    }
+
 }
