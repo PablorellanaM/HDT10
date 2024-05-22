@@ -34,4 +34,10 @@ public class FloydWarshallTest {
         assertEquals("0 -> 1 -> 2", path);
     }
 
+    @Test
+    public void testGetGraphCenter() {
+        int center = floydWarshall.getGraphCenter();
+        assertEquals(2, center);
+    }
+
 }
