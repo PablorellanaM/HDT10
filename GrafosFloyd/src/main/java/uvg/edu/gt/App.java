@@ -8,7 +8,8 @@ public class App {
     public static void main(String[] args) {
         Graph graph = new Graph(100); // Tamaño máximo de nodos, ajustar según necesidad.
         try {
-            File file = new File("src/main/java/uvg/edu/gt/guategrafo.txt");
+            File file = new File(
+                    "C:\\Users\\Pablo\\OneDrive\\Escritorio\\Proyecto ED\\HDT10\\GrafosFloyd\\src\\main\\java\\uvg\\edu\\gt\\guategrafo.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
