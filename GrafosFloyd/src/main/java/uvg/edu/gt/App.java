@@ -5,9 +5,11 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        Graph graph = new Graph(100);
+        Graph graph = new Graph(100); // Tamaño máximo de nodos, ajustar según necesidad.
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("guategrafo.txt"));
+            File file = new File(
+                    "C:\\Users\\Pablo\\OneDrive\\Escritorio\\Proyecto ED\\HDT10\\GrafosFloyd\\src\\main\\java\\uvg\\edu\\gt\\guategrafo.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
@@ -33,7 +35,7 @@ public class App {
             System.out.println("3. Modificar grafo");
             System.out.println("4. Salir");
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Consumir la nueva línea.
 
             switch (choice) {
                 case 1:
@@ -41,6 +43,10 @@ public class App {
                     String origin = scanner.nextLine();
                     System.out.println("Ingrese la ciudad destino:");
                     String destination = scanner.nextLine();
+                    if (!graph.getNodes().containsKey(origin) || !graph.getNodes().containsKey(destination)) {
+                        System.out.println("Una de las ciudades ingresadas no existe en el grafo.");
+                        break;
+                    }
                     int u = graph.getNodes().get(origin);
                     int v = graph.getNodes().get(destination);
                     System.out.println("Ruta más corta: " + floydWarshall.getPath(u, v));
@@ -61,6 +67,10 @@ public class App {
                         String from = scanner.nextLine();
                         System.out.println("Ingrese la ciudad destino:");
                         String to = scanner.nextLine();
+                        if (!graph.getNodes().containsKey(from) || !graph.getNodes().containsKey(to)) {
+                            System.out.println("Una de las ciudades ingresadas no existe en el grafo.");
+                            break;
+                        }
                         graph.removeEdge(from, to);
                     } else if (modChoice == 2) {
                         System.out.println("Ingrese la ciudad origen:");

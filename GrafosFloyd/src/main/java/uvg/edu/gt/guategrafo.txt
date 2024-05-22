@@ -1,0 +1,17 @@
+CiudadGuatemala Mixco 10
+Mixco Antigua 30
+Antigua Escuintla 50
+Escuintla SantaLucia 40
+SantaLucia CiudadGuatemala 60
+CiudadGuatemala Chimaltenango 20
+Chimaltenango Tecpan 30
+Tecpan Quetzaltenango 90
+Quetzaltenango Huehuetenango 80
+Huehuetenango Coban 120
+Coban PuertoBarrios 200
+PuertoBarrios Zacapa 70
+Zacapa Chiquimula 40
+Chiquimula Jalapa 50
+Jalapa Jutiapa 60
+Jutiapa SantaRosa 70
+SantaRosa CiudadGuatemala 80
