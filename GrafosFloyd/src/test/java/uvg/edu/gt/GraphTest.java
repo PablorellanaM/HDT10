@@ -27,4 +27,11 @@ public class GraphTest {
         assertEquals(Integer.MAX_VALUE, graph.getAdjMatrix()[fromIndex][toIndex]);
     }
 
+    @Test
+    public void testGetSize() {
+        graph.addNode("A");
+        graph.addNode("B");
+        assertEquals(2, graph.getSize());
+    }
+
 }
