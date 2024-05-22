@@ -50,4 +50,18 @@ public class Graph {
     public int getSize() {
         return size;
     }
+
+    public void printAdjMatrix() {
+        System.out.println("Matriz de Adyacencia:");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (adjMatrix[i][j] == INF) {
+                    System.out.print("INF ");
+                } else {
+                    System.out.print(adjMatrix[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
 }

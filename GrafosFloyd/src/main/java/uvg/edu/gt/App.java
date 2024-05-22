@@ -1,14 +1,14 @@
 package uvg.edu.gt;
 
 import java.io.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         Graph graph = new Graph(100); // Tamaño máximo de nodos, ajustar según necesidad.
         try {
-            File file = new File(
-                    "C:\\Users\\Pablo\\OneDrive\\Escritorio\\Proyecto ED\\HDT10\\GrafosFloyd\\src\\main\\java\\uvg\\edu\\gt\\guategrafo.txt");
+            File file = new File("src/main/java/uvg/edu/gt/guategrafo.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -25,6 +25,9 @@ public class App {
 
         FloydWarshall floydWarshall = new FloydWarshall(graph);
         floydWarshall.runFloydWarshall();
+
+        // Imprimir la matriz de adyacencia inicial
+        graph.printAdjMatrix();
 
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -59,8 +62,18 @@ public class App {
                 case 3:
                     System.out.println("1. Interrupción de tráfico");
                     System.out.println("2. Nueva conexión");
-                    int modChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    int modChoice = 0;
+                    boolean validInput = false;
+                    while (!validInput) {
+                        try {
+                            modChoice = scanner.nextInt();
+                            scanner.nextLine(); // Consumir la nueva línea.
+                            validInput = true;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Por favor ingrese una opción válida (1 o 2).");
+                            scanner.next(); // Limpiar la entrada inválida.
+                        }
+                    }
 
                     if (modChoice == 1) {
                         System.out.println("Ingrese la ciudad origen:");
@@ -78,11 +91,23 @@ public class App {
                         System.out.println("Ingrese la ciudad destino:");
                         String to = scanner.nextLine();
                         System.out.println("Ingrese la distancia:");
-                        int dist = scanner.nextInt();
+                        int dist = 0;
+                        validInput = false;
+                        while (!validInput) {
+                            try {
+                                dist = scanner.nextInt();
+                                validInput = true;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Por favor ingrese una distancia válida.");
+                                scanner.next(); // Limpiar la entrada inválida.
+                            }
+                        }
                         graph.addEdge(from, to, dist);
                     }
                     floydWarshall = new FloydWarshall(graph);
                     floydWarshall.runFloydWarshall();
+                    // Imprimir la matriz de adyacencia después de la modificación
+                    graph.printAdjMatrix();
                     break;
                 case 4:
                     running = false;
