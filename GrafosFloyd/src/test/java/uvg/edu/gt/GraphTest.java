@@ -34,4 +34,12 @@ public class GraphTest {
         assertEquals(2, graph.getSize());
     }
 
+    @Test
+    public void testPrintAdjMatrix() {
+        graph.addEdge("A", "B", 5);
+        graph.addEdge("B", "C", 10);
+        graph.printAdjMatrix();
+
+    }
+
 }
